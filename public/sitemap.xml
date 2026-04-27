@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://badbellafilms.com/</loc>
+  </url>
+
+  <url>
+    <loc>https://badbellafilms.com/projects</loc>
+  </url>
+
+  <url>
+    <loc>https://badbellafilms.com/about</loc>
+  </url>
+
+  <url>
+    <loc>https://badbellafilms.com/contact</loc>
+  </url>
+
+  <!-- PROJECT PAGES (add each one manually) -->
+  <url>
+    <loc>https://badbellafilms.com/projects/family-tradition</loc>
+  </url>
+
+  <url>
+    <loc>https://badbellafilms.com/projects/wilder</loc>
+  </url>
+
+  <url>
+    <loc>https://badbellafilms.com/projects/whats-buried-beneath-the-pines</loc>
+  </url>
+
+  <url>
+    <loc>https://badbellafilms.com/projects/bobbi-dupree</loc>
+  </url>
+
+  <url>
+    <loc>https://badbellafilms.com/projects/the-last-stop</loc>
+  </url>
+
+</urlset>
