@@ -79,8 +79,8 @@ function EmailForm() {
         onSubmit={async (e) => {
           e.preventDefault();
 
-          const form = e.target;
-          const email = form.email.value;
+          const form = e.target as HTMLFormElement;
+const email = (form.elements.namedItem("email") as HTMLInputElement).value;
 
           setLoading(true);
 
