@@ -92,6 +92,28 @@ export default function Home() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isMuted, setIsMuted] = useState(true);
 
+  // 👇 ADD THIS HERE
+  const [showStandby, setShowStandby] = useState(true);
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = 0.25;
+
+      audioRef.current.play().catch(() => {
+        // autoplay may be blocked — that's fine
+      });
+    }
+  }, []);
+
+  // 👇 ADD THIS SECOND useEffect RIGHT AFTER
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowStandby(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.volume = 0.25;
@@ -119,6 +141,7 @@ export default function Home() {
   return (
     <main className="relative min-h-screen bg-black text-white flex flex-col overflow-hidden">
 
+
       {/* HEADER */}
       <header className="absolute top-0 left-0 w-full z-20 flex justify-between items-center px-6 py-4">
         <div className="tracking-widest text-sm">
@@ -128,7 +151,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* SOUND TOGGLE (clean, not intrusive) */}
         <button
   onClick={toggleAudio}
   className={`
@@ -138,6 +160,9 @@ export default function Home() {
     text-xs sm:text-sm md:text-base
     px-4 py-2 sm:px-5 sm:py-2.5
 
+    w-[150px] sm:w-[170px] md:w-[190px]   ← 👈 THIS FIXES IT
+
+    text-center
     relative
 
     ${isMuted 
@@ -153,7 +178,7 @@ export default function Home() {
 
   {/* label */}
   <span className="relative z-10">
-    {isMuted ? "AUDIO AVAILABLE" : "AUDIO ON"}
+    {isMuted ? "AUDIO OFF" : "AUDIO ON"}
   </span>
 </button>
       </header>
@@ -195,9 +220,9 @@ export default function Home() {
           </div>
 
           <p className="text-lg md:text-xl opacity-80 max-w-2xl">
-            Our slate is currently in motion.
+            Our slate is in motion.
             <br />
-            The next phase of Bad Bella Films is coming soon.
+            The next phase of Bad Bella Films is coming.
           </p>
 <div className="mt-10 max-w-md">
   <p className="text-xs uppercase tracking-[0.25em] text-zinc-500 mb-4">
@@ -216,7 +241,7 @@ export default function Home() {
 
       {/* FOOTER */}
       <footer className="relative z-10 text-center text-xs opacity-60 pb-6">
-        © {new Date().getFullYear()} Bad Bella Films
+        © 2023 - {new Date().getFullYear()} Bad Bella Films
       </footer>
 
     </main>
